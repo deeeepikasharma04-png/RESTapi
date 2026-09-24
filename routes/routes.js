@@ -4,25 +4,23 @@ const router = express.Router();
 const Model = require('../model/model');
 
 router.post('/post', async (req, res) => {
-    // Build a new record using whatever name/age the client sent us.
+   
     const data = new Model({
         name: req.body.name,
         age: req.body.age
     });
 
     try {
-        // Save it to MongoDB. "await" means "wait for this to finish
-        // before moving to the next line".
         const dataToSave = await data.save();
-        res.status(200).json(dataToSave); // send back the saved record
+        res.status(200).json(dataToSave); 
     } catch (error) {
-        res.status(400).json({ message: error.message }); // something went wrong
+        res.status(400).json({ message: error.message }); 
     }
 });
 
 router.get('/getAll', async (req, res) => {
     try {
-        const data = await Model.find(); // find() with no filter = get everything
+        const data = await Model.find();
         res.json(data);
     } catch (error) {
         res.status(500).json({ message: error.message });

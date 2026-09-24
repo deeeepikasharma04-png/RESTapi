@@ -1,7 +1,3 @@
-// index.js
-// This is the starting point of our whole app.
-
-// Load the variables from our .env file (like DATABASE_URL) into process.env
 require('dotenv').config();
 
 const express = require('express');
